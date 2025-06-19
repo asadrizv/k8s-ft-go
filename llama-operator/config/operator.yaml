@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llama-operator
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: llama-operator
+  template:
+    metadata:
+      labels:
+        app: llama-operator
+    spec:
+      serviceAccountName: llama-operator
+      containers:
+      - name: manager
+        image: llama-operator:latest
+        imagePullPolicy: IfNotPresent
+        command: ["/manager"]

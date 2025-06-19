@@ -1,0 +1,9 @@
+apiVersion: llama.ai/v1alpha1
+kind: ModelDeployment
+metadata:
+  name: llama-sample
+spec:
+  modelName: llama
+  image: llama-image:latest
+  replicas: 1
+  weightsPVC: llama-weights
